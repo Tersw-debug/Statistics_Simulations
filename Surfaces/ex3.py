@@ -4,15 +4,15 @@ import numpy as np
 
 def graphingSurface(start_u, end_u, start_v, end_v):
     # Define parameter ranges
-    u = np.linspace(start_u, end_u, 50)
-    v = np.linspace(start_v, end_v, 50)
+    u = np.linspace(start_u, end_u, 100)
+    v = np.linspace(start_v, end_v, 100)
     # Create a grid of (u, v) values
     u, v = np.meshgrid(u, v)
 
     # Define the parametric equations
-    x = np.sin(u)
-    y = np.cos(u) * np.sin(v)
-    z = np.sin(v)
+    x = (1 - u) * (3 + np.cos(v)) * np.cos(4 * np.pi * u)
+    y = (1 - u) * (3 + np.cos(v)) * np.cos(4 * np.pi * u)
+    z = 3 * u + (1 - u) * np.sin(v)
 
     # Create the 3D plot
     fig = plt.figure()
@@ -25,4 +25,4 @@ def graphingSurface(start_u, end_u, start_v, end_v):
 
     plt.show()
 
-graphingSurface(0, 2*np.pi, 0, np.pi*2)
+graphingSurface(0, 10, 0, np.pi)
